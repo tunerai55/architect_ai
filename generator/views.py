@@ -33,7 +33,7 @@ Welcome to {topic}
             zip_file = zipfile.ZipFile(buffer, 'w')
 
             if tech == "django":
-    zip_file.writestr("project/manage.py", """#!/usr/bin/env python
+                zip_file.writestr("project/manage.py", """#!/usr/bin/env python
 import os
 import sys
 
@@ -46,9 +46,9 @@ if __name__ == '__main__':
     main()
 """)
 
-    zip_file.writestr("project/project/__init__.py", "")
+                zip_file.writestr("project/project/__init__.py", "")
 
-    zip_file.writestr("project/project/settings.py", f"""
+                zip_file.writestr("project/project/settings.py", f"""
 SECRET_KEY = 'dummykey'
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -79,7 +79,7 @@ DATABASES = {{
 }}
 """)
 
-    zip_file.writestr("project/project/urls.py", f"""
+                zip_file.writestr("project/project/urls.py", f"""
 from django.urls import path
 from django.http import HttpResponse
 
@@ -91,7 +91,7 @@ urlpatterns = [
 ]
 """)
 
-    zip_file.writestr("project/project/wsgi.py", """
+                zip_file.writestr("project/project/wsgi.py", """
 import os
 from django.core.wsgi import get_wsgi_application
 
@@ -99,9 +99,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 application = get_wsgi_application()
 """)
 
-    zip_file.writestr("project/requirements.txt", "Django")
+                zip_file.writestr("project/requirements.txt", "Django")
 
-    zip_file.writestr("project/README.md", f"""# {topic}
+                zip_file.writestr("project/README.md", f"""# {topic}
 
 ## Run this project:
 
