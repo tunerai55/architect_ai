@@ -16,13 +16,14 @@
     <input type="text" name="topic" placeholder="Enter project topic">
 
     <select name="difficulty">
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Advanced</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
     </select>
 
-    <button type="submit">Generate Project</button>
-    <button type="submit">Download Project</button>
+    <!-- IMPORTANT -->
+    <button type="submit" name="action" value="generate">Generate Project</button>
+    <button type="submit" name="action" value="download">Download Project</button>
 
 </form>
 
