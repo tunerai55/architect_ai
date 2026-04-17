@@ -1,0 +1,25 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Technology:</label>
+    <select name="tech">
+        <option value="django">Django</option>
+        <option value="android">Android</option>
+    </select>
+
+    <label>Project Type:</label>
+    <select name="type">
+        <option value="web">Web App</option>
+        <option value="android">Android</option>
+    </select>
+
+    <input type="text" name="topic" placeholder="Enter project topic">
+
+    <select name="difficulty">
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+    </select>
+
+    <button type="submit">Generate Project</button>
+</form>
