@@ -1,23 +1,40 @@
-# generator/services/code_generator.py
+def generate_project(tech, project_type, topic, difficulty):
+    if tech == "django":
+        return f"""
+Project: {topic}
 
-def generate_project_code(tech_stack, project_type, topic, difficulty):
+Steps:
+1. Create Django project
+2. Create app
+3. Define models
+4. Add views
+
+Sample Code:
+
+# views.py
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to {topic}")
+"""
     
-    prompt = f"""
-    Generate a complete {project_type} project using {tech_stack}.
-    Topic: {topic}
-    Difficulty: {difficulty}
+    elif tech == "android":
+        return f"""
+Project: {topic}
 
-    Include:
-    - Full code
-    - File structure
-    - Explanation
-    - Setup instructions
-    """
+Steps:
+1. Create Android project
+2. Design UI in XML
+3. Add Java/Kotlin logic
 
-    # For now (mock)
-    return {
-        "title": topic,
-        "code": f"# Sample {tech_stack} project for {topic}",
-        "explanation": "This project demonstrates basic functionality.",
-        "setup": "Run pip install requirements.txt"
-    }
+Sample Code:
+
+// MainActivity.java
+public class MainActivity extends AppCompatActivity {{
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {{
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }}
+}}
+"""

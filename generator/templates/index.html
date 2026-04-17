@@ -23,3 +23,8 @@
 
     <button type="submit">Generate Project</button>
 </form>
+
+{% if result %}
+    <h2>Generated Project</h2>
+    <pre>{{ result }}</pre>
+{% endif %}
