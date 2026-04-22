@@ -224,7 +224,7 @@ Welcome to {topic}
 """
             return render(request, "index.html", {"result": result})
 
-        # 👉 DOWNLOAD
+        # 👉 DOWNLOAD (FIXED INSIDE POST)
         elif action == "download":
             buffer = io.BytesIO()
             zip_file = zipfile.ZipFile(buffer, 'w')
