@@ -24,7 +24,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
 ]
@@ -221,21 +225,21 @@ Welcome to {topic}
             return render(request, "index.html", {"result": result})
 
         # 👉 DOWNLOAD
-    elif action == "download":
-        buffer = io.BytesIO()
-        zip_file = zipfile.ZipFile(buffer, 'w')
+        elif action == "download":
+            buffer = io.BytesIO()
+            zip_file = zipfile.ZipFile(buffer, 'w')
 
-    if tech == "django":
-        project_type = request.POST.get("type")
-        generate_django_project(zip_file, topic, project_type)
+            if tech == "django":
+                project_type = request.POST.get("type")
+                generate_django_project(zip_file, topic, project_type)
 
-    elif tech == "android":
-        generate_android_project(zip_file, topic)
+            elif tech == "android":
+                generate_android_project(zip_file, topic)
 
-    zip_file.close()
+            zip_file.close()
 
-    response = HttpResponse(buffer.getvalue(), content_type='application/zip')
-    response['Content-Disposition'] = f'attachment; filename={topic}.zip'
-    return response
+            response = HttpResponse(buffer.getvalue(), content_type='application/zip')
+            response['Content-Disposition'] = f'attachment; filename={topic}.zip'
+            return response
 
     return render(request, "index.html")
