@@ -221,9 +221,9 @@ Welcome to {topic}
             return render(request, "index.html", {"result": result})
 
         # 👉 DOWNLOAD
-        elif action == "download":
-    buffer = io.BytesIO()
-    zip_file = zipfile.ZipFile(buffer, 'w')
+    elif action == "download":
+        buffer = io.BytesIO()
+        zip_file = zipfile.ZipFile(buffer, 'w')
 
     if tech == "django":
         project_type = request.POST.get("type")
@@ -237,5 +237,5 @@ Welcome to {topic}
     response = HttpResponse(buffer.getvalue(), content_type='application/zip')
     response['Content-Disposition'] = f'attachment; filename={topic}.zip'
     return response
-    
+
     return render(request, "index.html")
