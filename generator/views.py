@@ -153,4 +153,4 @@ def home(request):
             response['Content-Disposition'] = 'attachment; filename=ai_project.zip'
             return response
 
-    return render(request, "index.html")
+     return render(request, "index.html")
