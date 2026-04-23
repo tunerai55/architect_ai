@@ -1,31 +1,12 @@
 <form method="POST">
     {% csrf_token %}
 
-    <label>Technology:</label>
-    <select name="tech">
-        <option value="django">Django</option>
-        <option value="android">Android</option>
-    </select>
+    <textarea name="prompt" placeholder="Describe your project...
+Example: Build a Django ecommerce app with login and cart"
+    rows="5" style="width:100%"></textarea>
 
-    <label>Project Type:</label>
-    <select name="type">
-        <option value="auth">Authentication System</option>
-        <option value="blog">Blog App</option>
-        <option value="ecommerce">E-Commerce</option>
-    </select>
-
-    <input type="text" name="topic" placeholder="Enter project topic">
-
-    <select name="difficulty">
-        <option value="Beginner">Beginner</option>
-        <option value="Intermediate">Intermediate</option>
-        <option value="Advanced">Advanced</option>
-    </select>
-
-    <!-- IMPORTANT -->
-    <button type="submit" name="action" value="generate">Generate Project</button>
-    <button type="submit" name="action" value="download">Download Project</button>
-
+    <button name="action" value="generate">Generate</button>
+    <button name="action" value="download">Download</button>
 </form>
 
 {% if result %}
