@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from dotenv import load_dotenv
 
-# Load env
+# Load environment variables
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -33,23 +33,21 @@ def home(request):
         prompt = request.POST.get("topic")
         action = request.POST.get("action")
 
-        # 🔥 PREVIEW
+        # Preview
         if action == "generate":
             preview = generate_ai_code("Explain project: " + prompt)
             return render(request, "index.html", {"result": preview})
 
-        # 🔥 DOWNLOAD ZIP
+        # Download ZIP
         elif action == "download":
             buffer = io.BytesIO()
             zip_file = zipfile.ZipFile(buffer, 'w')
 
-            # AI GENERATED FILES
             models = generate_ai_code("Create models.py for: " + prompt)
             views = generate_ai_code("Create views.py for: " + prompt)
             urls = generate_ai_code("Create urls.py for: " + prompt)
             html = generate_ai_code("Create HTML template for: " + prompt)
 
-            # SAVE FILES
             zip_file.writestr("project/app/models.py", models)
             zip_file.writestr("project/app/views.py", views)
             zip_file.writestr("project/app/urls.py", urls)
